@@ -4,11 +4,12 @@ import time
 import math
 from twilio.rest import Client
 
+# Stock market API requests
 STOCK = "TSLA"
 COMPANY_NAME = "Tesla Inc"
 STOCK_ENDPOINT = "https://www.alphavantage.co/query"
 NEWS_ENDPOINT = "https://gnews.io/api/v4/search"
-API_KEY = "WP0T85UFFNFM35U5"
+API_KEY = "INSERT_API_KEY"
 
 parameters = {
     "symbol": STOCK,
@@ -30,7 +31,8 @@ day_before_close = data["Time Series (Daily)"][f"{day_before}"]["4. close"]
 diff = (float(y_day_close) - float(day_before_close)) * 0.05
 print(abs(diff))
 
-API_KEY2 = "f6e6ec6d950d6a5e46c6d4a06dcd07ac"
+#News data API request
+API_KEY2 = "INSERT_API_KEY2"
 parameter2 = {
     "q": COMPANY_NAME,
     "lang": "en",
@@ -41,8 +43,8 @@ x = slice(3)
 news = news_data.json()['articles'][x]
 
 
-account_sid = 'AC8367768ad455a3491e66316c2f16a4ee'
-auth_token = '6c9fdd4d6183efd788bb2470486a5604'
+account_sid = 'INSERT_SID'
+auth_token = 'INSERT_TOKEN'
 client = Client(account_sid, auth_token)
 number = 0
 for art in news:
@@ -56,7 +58,7 @@ for art in news:
     message = client.messages.create(
         body=message,
         from_='+15618166864',
-        to='+447429180068')
+        to='INSERT_NUMBER')
     print(message.status)
 
 
